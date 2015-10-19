@@ -5,3 +5,4 @@ ruby "2.2.2"
 
 gem 'sinatra'
 gem 'were_wolf'
+gem 'json'
