@@ -1,11 +1,78 @@
-<h1>WereWolf Analyser</h1>
-<p>
-  Start your game better to make it more interesting.
-</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>WereWolf Analyser</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>WereWolf Analyser</h1>
+      <p>
+        Start your game better to make it more interesting.
+      </p>
 
-<h2>Usage</h2>
-<h3>Simulate a Game Run</h3>
-<p>
-  Simulating a game run is so simple. Just pass in the number of wolves and villagers.<br>
-  Access the link: <a href="/game?wolves=3&villagers=9">/game?wolves=3&amp;villagers=9</a> to see the result.
-</p>
+      <h2>Usage</h2>
+      <h3>Simulate a Game Run</h3>
+      <p>
+        Simulating a game run is so simple. Just pass in the number of wolves and villagers.<br>
+        Access the link: <a href="/game?wolves=3&villagers=9">/game?wolves=3&amp;villagers=9</a> to see the result.
+      </p>
+      <p>
+        This returns a json object with a number:<br>
+        <dl class="dl-horizontal">
+          <dt>0</dt>
+          <dd>It is a draw</dd>
+          <dt>1</dt>
+          <dd>Wolves Won</dd>
+          <dt>2</dt>
+          <dd>Villagers Won</dd>
+        </dl>
+      </p>
+
+      <h3>Simulate multiple runs</h3>
+      <p>
+        Monte Carlo simulation is run for 100 times.<br>
+        Access the link: <a href="/simulate?wolves=3&villagers=9">/simulate?wolves=3&amp;villagers=9</a> to see the result.
+      </p>
+      <p>
+        This returns a json object:
+        <code>
+          {
+            <kbd>0</kbd>: &lt;No. of times there was a draw&gt;,
+            <kbd>1</kbd>: &lt;No. of times wolves won&gt;,
+            <kbd>2</kbd>: &lt;No. of times villagers won&gt;,
+          }
+        </code>
+      </p>
+
+      <h3>Suggest Player Config</h3>
+      <p>
+        If you are confused the number of wolves to start with, we can suggest you the best config.<br>
+        The best config is where wolves have 70% chance of winning.
+      </p>
+      <p>
+        Access the link: <a href="/suggest?players=12">/suggest?players=12</a> to see the result.
+      </p>
+      <p>
+        This returns a json object:
+        <code>
+          {
+            <kbd>players</kbd>: {
+              <kbd>wolves</kbd>: &lt;No. of Wolves&gt;,
+              <kbd>cops</kbd>: &lt;No. of Cops&gt;,
+              <kbd>doctors</kbd>: &lt;No. of Doctors&gt;,
+              <kbd>rogues</kbd>: &lt;No. of Rogues&gt;,
+              <kbd>villagers</kbd>: &lt;No. of Villagers&gt;
+            },
+            <kbd>probabilities</kbd>: {
+              <kbd>wolves_win</kbd>: &lt;Probability of Wolves Winning&gt;,
+              <kbd>villagers_win</kbd>: &lt;Probability of Villagers Winning&gt;,
+              <kbd>draws</kbd>: &lt;Probability of Draw&gt;
+            }
+          }
+        </code>
+      </p>
+    </div>
+  </body>
+</html>
